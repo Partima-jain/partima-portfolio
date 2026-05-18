@@ -53,21 +53,51 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {[
+            {
+              title: "AI Resume Parser",
+              category: "AI · NLP · Backend",
+              tools: "FastAPI, Python, spaCy, OpenAI, Gemini, Docker",
+            },
+            {
+              title: "Social Media AI Analytics",
+              category: "AI · Data · Full-Stack",
+              tools: "FastAPI, YouTube Data API, React, AWS, CI/CD",
+            },
+            {
+              title: "RAG Knowledge Base",
+              category: "LLM · Semantic Search",
+              tools: "LangChain, Pinecone, OpenAI GPT-4, FastAPI, Python",
+            },
+            {
+              title: "Sentiment Analysis Dashboard",
+              category: "NLP · Data Visualisation",
+              tools: "HuggingFace Transformers, Pandas, Seaborn, Power BI",
+            },
+            {
+              title: "Secure REST API Platform",
+              category: "Backend · DevOps",
+              tools: "FastAPI, PostgreSQL, JWT, Docker, GitHub Actions",
+            },
+            {
+              title: "AI Content Generator",
+              category: "Generative AI · Full-Stack",
+              tools: "OpenAI GPT-4, FastAPI, React.js, AWS, Vite",
+            },
+          ].map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
-
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image="/images/placeholder.webp" alt={project.title} />
             </div>
           ))}
         </div>

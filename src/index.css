@@ -58,12 +58,18 @@ main {
 body {
   margin: 0;
   height: auto;
-  background-color: #000;
+  background-color: var(--backgroundColor);
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+/* GSAP injects a pin-spacer div when pinning; give it the same background
+   so there's never a black gap while scrolling through the Work pin */
+.pin-spacer {
+  background-color: var(--backgroundColor) !important;
 }
 .main-body {
   max-width: 100vw;
@@ -96,8 +102,6 @@ body {
   position: relative;
   height: var(--vh);
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: -100px;
 }
 
 .techstack h2 {

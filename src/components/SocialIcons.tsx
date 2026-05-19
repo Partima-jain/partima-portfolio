@@ -2,6 +2,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
+import { FiDownload } from "react-icons/fi";
 import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
@@ -65,12 +66,30 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
-        <HoverLinks text="RESUME" />
-        <span>
-          <TbNotes />
-        </span>
-      </a>
+      <div className="resume-button-group">
+        {/* View — opens PDF in new tab */}
+        <a
+          className="resume-button"
+          href="/Partima_Jain_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="View Resume"
+        >
+          <HoverLinks text="RESUME" />
+          <span>
+            <TbNotes />
+          </span>
+        </a>
+        {/* Download icon sits just below the RESUME text */}
+        <a
+          className="resume-download"
+          href="/Partima_Jain_Resume.pdf"
+          download="Partima_Jain_Resume.pdf"
+          title="Download Resume"
+        >
+          <FiDownload />
+        </a>
+      </div>
     </div>
   );
 };

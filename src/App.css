@@ -26,3 +26,71 @@
     max-width: var(--cWidth);
   }
 }
+
+/* ── Floating Resume Button ─────────────────────────────────────────────── */
+.resume-fab {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.resume-fab__view {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(194, 164, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #eae5ec;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.resume-fab__view:hover {
+  background: rgba(194, 164, 255, 0.25);
+  color: var(--accentColor);
+}
+
+.resume-fab__download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  background: rgba(194, 164, 255, 0.12);
+  color: #eae5ec;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.resume-fab__download:hover {
+  background: var(--accentColor);
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .resume-fab {
+    bottom: 20px;
+    left: 20px;
+  }
+  .resume-fab__view span {
+    display: none;
+  }
+  .resume-fab__view {
+    padding: 12px 14px;
+    border-right: none;
+  }
+  .resume-fab__download {
+    display: none;
+  }
+}

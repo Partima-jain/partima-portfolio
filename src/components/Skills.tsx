@@ -15,6 +15,7 @@ const skills = [
   { name: "AWS",           cat: "devops" },
   { name: "CI/CD",         cat: "devops" },
   { name: "Git",           cat: "devops" },
+  { name: "n8n",           cat: "devops" },
   { name: "PostgreSQL",    cat: "data"   },
   { name: "MongoDB",       cat: "data"   },
   { name: "Pandas",        cat: "data"   },

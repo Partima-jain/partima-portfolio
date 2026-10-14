@@ -144,21 +144,11 @@ const AboutSkills = () => {
     <section id="about" className="about-skills section-pad">
       <div className="container">
         <div className="about-skills__intro">
+          <h2>Skills & Expertise</h2>
           <p>
-            I&apos;m currently looking to join a{" "}
-            <span>cross-functional team</span>
-            <br />
-            <small>
-              that values shipping reliable AI products people actually use
-            </small>
+            Looking to join a <span>cross-functional team</span> that values
+            shipping reliable AI products people actually use.
           </p>
-        </div>
-
-        <div className="about-skills__orbit" aria-hidden>
-          <div className="about-skills__core">AI</div>
-          <div className="about-skills__ring about-skills__ring--1" />
-          <div className="about-skills__ring about-skills__ring--2" />
-          <div className="about-skills__ring about-skills__ring--3" />
         </div>
 
         <div className="about-skills__groups">
@@ -176,28 +166,30 @@ const AboutSkills = () => {
           ))}
         </div>
 
-        <div className="about-skills__education">
-          <h3>Education</h3>
-          <div className="about-skills__edu-list">
-            {EDUCATION.map((item) => (
-              <div className="about-skills__edu-item" key={item.title}>
-                <span>{item.years}</span>
-                <div>
-                  <h4>{item.title}</h4>
-                  <p>{item.detail}</p>
+        <div className="about-skills__lower">
+          <div className="about-skills__education">
+            <h3>Education</h3>
+            <div className="about-skills__edu-list">
+              {EDUCATION.map((item) => (
+                <div className="about-skills__edu-item" key={item.title}>
+                  <span>{item.years}</span>
+                  <div>
+                    <h4>{item.title}</h4>
+                    <p>{item.detail}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="about-skills__achievements">
-          <h3>Certifications & Achievements</h3>
-          <ul>
-            {ACHIEVEMENTS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className="about-skills__achievements">
+            <h3>Certifications & Achievements</h3>
+            <ul>
+              {ACHIEVEMENTS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

@@ -288,7 +288,7 @@ function LegendDot({ cat }: { cat: string }) {
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 const Skills = () => {
-  // `mounted` latches true on first intersection and never resets — this
+  // `mounted` latches true on first intersection and never resets - this
   // prevents the canvas from tearing down and remounting every time the user
   // scrolls back into the section.
   const [mounted, setMounted] = useState(false);
@@ -302,7 +302,7 @@ const Skills = () => {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setMounted(true); // latch — never goes back to false
+          setMounted(true); // latch - never goes back to false
           setVisible(true);
         } else {
           setVisible(false); // pause render loop when scrolled away
@@ -322,10 +322,11 @@ const Skills = () => {
   return (
     <section className="skills-section" id="skills">
       <div className="skills-header">
+        <p className="section-label">Toolkit</p>
         <h2 className="skills-title">
           My <span>Skills</span>
         </h2>
-        <p className="skills-sub">Hover any orb · each colour is a category</p>
+        <p className="skills-sub">Hover an orb · colour marks the category</p>
         <div className="skills-legend">
           {Object.keys(CAT).map((cat) => (
             <LegendDot key={cat} cat={cat} />

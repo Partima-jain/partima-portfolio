@@ -1,79 +1,88 @@
+import { useState } from "react";
 import "./styles/Career.css";
 
+const ROLES = [
+  {
+    title: "AI Developer Engineer",
+    company: "Stulink Private Limited · Remote",
+    when: "NOW",
+    summary:
+      "Building intelligent AI-driven features and scalable backend infrastructure. Designing LLM-powered workflows, integrating NLP and generative AI into core products.",
+  },
+  {
+    title: "Python AI Developer",
+    company: "Perimattic · Remote",
+    when: "Jun – Nov 2025",
+    summary:
+      "FastAPI AI backends with 30% faster responses. Resume parsing at 95%+ accuracy. OpenAI & Gemini integrations for automated insights.",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Onebanc Technologies · Gurugram",
+    when: "Aug 2024 – May 2025",
+    summary:
+      "Secure responsive apps (+15% engagement). REST APIs, databases, JWT auth, CI/CD - latency and bugs down 20%.",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Webistic · Remote",
+    when: "Apr – Jul 2024",
+    summary:
+      "Python (Django/Flask), React, and JavaScript apps. Database optimisation, UX improvements, cloud CI/CD deployments.",
+  },
+];
+
 const Career = () => {
+  const [open, setOpen] = useState(0);
+
   return (
     <div className="career-section section-container">
       <div className="career-container">
+        <p className="section-label">Experience</p>
         <h2>
-          My career <span>&</span>
+          Career <span>&</span>
           <br /> experience
         </h2>
         <div className="career-info">
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Webistic · Remote</h5>
+          {ROLES.map((role, index) => (
+            <div
+              className={`career-info-box${open === index ? " is-open" : ""}`}
+              key={`${role.title}-${role.when}`}
+              onMouseEnter={() => setOpen(index)}
+              onClick={() => setOpen(index)}
+            >
+              <div className="career-info-in">
+                <div className="career-role">
+                  <h4>{role.title}</h4>
+                  <h5>{role.company}</h5>
+                </div>
+                <h3>{role.when}</h3>
               </div>
-              <h3>Apr – Jul 2024</h3>
+              <p>{role.summary}</p>
             </div>
-            <p>
-              Built and maintained scalable web applications using Python
-              (Django/Flask), React, and JavaScript. Optimised relational and
-              NoSQL databases, improved frontend UX, and deployed cloud-hosted
-              apps on AWS/Heroku via CI/CD pipelines in an Agile team.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Onebanc Technologies · Gurugram</h5>
+          ))}
+        </div>
+
+        <div className="education-block">
+          <p className="section-label">Education</p>
+          <div className="education-list">
+            <div className="education-item">
+              <span className="education-years">2021 – 2025</span>
+              <div>
+                <h4>BTech in AI &amp; ML</h4>
+                <p>CGC University · CGPA 8.6/10.0</p>
               </div>
-              <h3>Aug 2024 – May 2025</h3>
             </div>
-            <p>
-              Delivered secure, responsive web apps with JavaScript, HTML, and
-              CSS, increasing user engagement by 15%. Designed RESTful APIs in
-              Python, administered MySQL/PostgreSQL/MongoDB, implemented JWT
-              auth, and maintained CI/CD pipelines — reducing client-server
-              latency by 20% and post-production bugs by 20%.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Python AI Developer</h4>
-                <h5>Perimattic · Remote</h5>
+            <div className="education-item">
+              <span className="education-years">2021</span>
+              <div>
+                <h4>Higher Secondary (Class XII)</h4>
+                <p>CBSE</p>
               </div>
-              <h3>Jun – Nov 2025</h3>
             </div>
-            <p>
-              Developed and deployed FastAPI-powered AI backends — cutting
-              model response times by 30%. Built AI resume parsing pipelines
-              with 95%+ extraction accuracy, integrated OpenAI &amp; Gemini
-              APIs for automated insights, and fine-tuned ML models to boost
-              prediction reliability by 20%.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>AI Developer Engineer</h4>
-                <h5>Stulink Private Limited · Remote</h5>
-              </div>
-              <h3>NOW</h3>
-            </div>
-            <p>
-              Building intelligent AI-driven features and scalable backend
-              infrastructure at Stulink. Designing LLM-powered workflows,
-              integrating NLP and generative AI capabilities into core
-              products, and optimising system performance to deliver
-              production-ready AI solutions.
-            </p>
           </div>
         </div>
       </div>

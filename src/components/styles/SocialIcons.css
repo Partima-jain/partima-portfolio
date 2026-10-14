@@ -17,20 +17,6 @@
   z-index: 999;
   padding: 10px;
 }
-.social-icons:hover {
-  transition: 0.3s;
-  color: var(--backgroundColor);
-}
-.social-icons a:hover {
-  color: var(--backgroundColor);
-  /* transform: scale(1.2); */
-}
-.social-icons span {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
-}
 .social-icons a {
   --siLeft: 50%;
   --siTop: 50%;
@@ -39,9 +25,19 @@
   top: var(--siTop, 50%);
   transform: translate(-50%, -50%);
   display: flex;
-  font-size: 23px;
+  font-size: 22px;
+  color: var(--text-muted);
   will-change: left, top;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, color 0.25s ease;
+}
+.social-icons a:hover {
+  color: var(--accentColor);
+}
+.social-icons span {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: flex;
 }
 .resume-button-group {
   position: absolute;
@@ -60,20 +56,21 @@
   gap: 5px;
   width: auto;
   text-wrap: nowrap;
-  letter-spacing: 4px;
-  font-size: 15px;
+  letter-spacing: 0.2em;
+  font-size: 13px;
   line-height: 15px;
   font-weight: 600;
-  color: #5e5e5e;
+  font-family: var(--font-body);
+  color: var(--text-muted);
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.35s ease;
 }
 .resume-button:hover {
-  color: #fff;
+  color: var(--accentColor);
 }
 div.resume-button span {
-  color: #fff;
-  font-size: 17px;
+  color: var(--accentColor);
+  font-size: 16px;
   margin-top: -1px;
   display: flex;
   align-items: center;
@@ -83,9 +80,8 @@ div.resume-button span {
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  color: #5e5e5e;
+  color: var(--text-muted);
   transition: color 0.3s;
-  /* counter-rotate so the icon stays upright */
   transform: rotateZ(90deg);
 }
 .resume-download:hover {
@@ -103,10 +99,10 @@ div.resume-button span {
 @media only screen and (min-width: 900px) {
   .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 16px;
   }
   .social-icons a {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -117,15 +113,16 @@ div.resume-button span {
     gap: 10px;
   }
   .resume-button {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 20px;
+    letter-spacing: 0.16em;
   }
   div.resume-button span {
-    font-size: 23px;
+    font-size: 18px;
     margin-top: -1.5px;
   }
   .resume-download {
     transform: none;
-    font-size: 18px;
+    font-size: 17px;
   }
 }

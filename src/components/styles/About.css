@@ -10,24 +10,70 @@
   margin: auto;
 }
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 500px;
+  padding: 80px 0 0;
+  width: 580px;
   max-width: calc(100% - 15px);
 }
 .about-me h3 {
-  font-size: 25px;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  font-weight: 400;
-  color: var(--accentColor);
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  text-transform: none;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+  color: var(--text);
+  margin: 0 0 20px;
+  line-height: 1.05;
 }
 
-.about-me p {
-  font-size: 33px;
-  font-weight: 600;
-  line-height: 36px;
-  letter-spacing: 1px;
+.about-me p.para {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.5vw, 24px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 36ch;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+  max-width: 420px;
+}
+
+.about-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 18px;
+  background: rgba(18, 21, 28, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.about-chip:hover {
+  border-color: var(--accentColor);
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+}
+.about-chip strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.about-chip span {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 @media only screen and (min-width: 600px) {
@@ -37,12 +83,8 @@
 }
 @media only screen and (min-width: 768px) {
   .about-me {
-    width: 500px;
+    width: 580px;
     max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-section {
-    opacity: 1;
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -51,21 +93,14 @@
     justify-content: right;
     max-width: 1920px;
     height: var(--vh);
-    padding: 0px;
-    opacity: 1;
+    padding: 0;
   }
   .about-me {
-    padding: 0px;
-    width: 50%;
+    padding: 0;
+    width: 48%;
   }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
-  }
-}
-@media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+  .about-highlights {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 100%;
   }
 }

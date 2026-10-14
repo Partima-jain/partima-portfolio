@@ -15,7 +15,7 @@ const PROJECTS = [
     title: "AI Knowledge Assistant",
     category: "RAG · LLM · Semantic Search",
     description:
-      "Upload any PDF or DOCX and get AI-generated answers grounded in your documents — with cited page references and match scores. Powered by FAISS vector search and GPT-4o-mini for instant, accurate retrieval at scale.",
+      "Upload any PDF or DOCX and get AI-generated answers grounded in your documents - with cited page references and match scores. Powered by FAISS vector search and GPT-4o-mini for instant, accurate retrieval at scale.",
     tools: "FastAPI, FAISS, OpenAI GPT-4o-mini, PyMuPDF, python-docx",
     image: "/images/proj-knowledge-assistant.png",
     link: "https://github.com/Partima-jain/AI-knowledge-assistant",
@@ -24,7 +24,7 @@ const PROJECTS = [
     title: "BuildOS · Social Brand AI",
     category: "AI · Data Analytics · Full-Stack",
     description:
-      "A full-scale personal brand intelligence platform. Connects to YouTube + Instagram via OAuth, calculates a real-time Brand Score, predicts content virality, suggests optimal posting times, and benchmarks against competitors — all driven by AI.",
+      "A full-scale personal brand intelligence platform. Connects to YouTube + Instagram via OAuth, calculates a real-time Brand Score, predicts content virality, suggests optimal posting times, and benchmarks against competitors - all driven by AI.",
     tools: "FastAPI, YouTube Data API, Instagram Graph API, PostgreSQL, SendGrid",
     image: "/images/proj-social-analytics.png",
     link: "https://github.com/Partima-jain/Social-media-analyzer",
@@ -33,7 +33,7 @@ const PROJECTS = [
     title: "AI Phone Voice Assistant",
     category: "Voice AI · Telephony · NLP",
     description:
-      "A production-ready AI voice bot that answers real phone calls via Twilio. Uses Deepgram for real-time speech-to-text and Sarvam AI for natural TTS responses — handling inbound calls, outbound dialling, and full conversation transcripts automatically.",
+      "A production-ready AI voice bot that answers real phone calls via Twilio. Uses Deepgram for real-time speech-to-text and Sarvam AI for natural TTS responses - handling inbound calls, outbound dialling, and full conversation transcripts automatically.",
     tools: "FastAPI, Twilio, Deepgram STT, Sarvam AI TTS, ngrok, Python",
     image: "/images/proj-voice-assistant.png",
     link: "https://github.com/Partima-jain/phone-voice-assistant",
@@ -51,7 +51,7 @@ const PROJECTS = [
     title: "StudConnect Platform",
     category: "Full-Stack · EdTech · AI",
     description:
-      "A comprehensive university discovery and application platform. Students get AI-powered shortlists ranked by personalised match scores, scholarship search with smart filters, counsellor booking, and OTP-secured auth — all backed by a production-grade FastAPI + PostgreSQL + MongoDB stack.",
+      "A comprehensive university discovery and application platform. Students get AI-powered shortlists ranked by personalised match scores, scholarship search with smart filters, counsellor booking, and OTP-secured auth - all backed by a production-grade FastAPI + PostgreSQL + MongoDB stack.",
     tools: "FastAPI, PostgreSQL, MongoDB, JWT, OTP Email, React, Python",
     image: "/images/proj-studconnect.png",
     link: "https://github.com/Partima-jain/yournextuniversity-backend",
@@ -60,7 +60,7 @@ const PROJECTS = [
     title: "AI Resume Screener",
     category: "AI · NLP · HR Automation",
     description:
-      "An intelligent recruitment automation tool that parses and scores candidate resumes against a job description in seconds. Extracts skills, experience, and qualifications using NLP, ranks applicants by fit score, and flags top matches — cutting manual screening time drastically.",
+      "An intelligent recruitment automation tool that parses and scores candidate resumes against a job description in seconds. Extracts skills, experience, and qualifications using NLP, ranks applicants by fit score, and flags top matches - cutting manual screening time drastically.",
     tools: "FastAPI, spaCy, OpenAI, PyMuPDF, Python, Docker",
     image: "/images/proj-resume-screening.png",
     link: "https://github.com/Partima-jain/Ai-resume-Screening",
@@ -69,7 +69,7 @@ const PROJECTS = [
     title: "AI Image Caption Generator",
     category: "Computer Vision · Transformers · GUI",
     description:
-      "A desktop app that auto-generates natural-language captions for any image using a ViT-GPT2 vision-language Transformer from HuggingFace. Supports both file upload and live webcam capture, runs inference on GPU (CUDA) or CPU, and displays results instantly in a Tkinter GUI — no cloud API needed.",
+      "A desktop app that auto-generates natural-language captions for any image using a ViT-GPT2 vision-language Transformer from HuggingFace. Supports both file upload and live webcam capture, runs inference on GPU (CUDA) or CPU, and displays results instantly in a Tkinter GUI - no cloud API needed.",
     tools: "HuggingFace Transformers, ViT-GPT2, PyTorch, OpenCV, Tkinter, Python",
     image: "/images/proj-image-caption.png",
     link: "https://github.com/Partima-jain/Image-caption-Generator",
@@ -78,7 +78,7 @@ const PROJECTS = [
     title: "AI Diet Planner",
     category: "Health Tech · AI · Desktop App",
     description:
-      "A personalised nutrition planner that builds calorie-balanced meal plans from a hand-crafted database of 60+ foods with full macro breakdowns (protein, carbs, fats). Takes user weight, height, age, activity level, fitness goal, dietary restrictions, and allergies, then generates a daily meal plan and tracks meal history to a CSV — all through a polished Tkinter desktop UI.",
+      "A personalised nutrition planner that builds calorie-balanced meal plans from a hand-crafted database of 60+ foods with full macro breakdowns (protein, carbs, fats). Takes user weight, height, age, activity level, fitness goal, dietary restrictions, and allergies, then generates a daily meal plan and tracks meal history to a CSV - all through a polished Tkinter desktop UI.",
     tools: "Python, Tkinter, CSV, Nutritional Algorithms, OOP",
     image: "/images/proj-diet-planner.png",
     link: "https://github.com/Partima-jain/Ai-Diet-Planner",
@@ -104,14 +104,38 @@ const Work = () => {
   const translateXRef = useRef(0);
   const [selected, setSelected] = useState<Project | null>(null);
 
-  // Close modal on Escape key
+  // Use smoother.scrollTo() - the site uses GSAP ScrollSmoother so native
+  // window.scrollTo fights with it and gets cut short
+  const goTo = (idx: number) => {
+    const st = ScrollTrigger.getById("work");
+    if (!st) return;
+    const scrollRange = translateXRef.current / SMOOTHER_SPEED;
+    const target = st.start + (idx / (PROJECTS.length - 1)) * scrollRange;
+    if (smoother) {
+      smoother.scrollTo(target, true);
+    } else {
+      window.scrollTo({ top: target, behavior: "smooth" });
+    }
+  };
+
+  // Close modal on Escape; arrow keys navigate projects when modal closed
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelected(null);
+      if (e.key === "Escape") {
+        setSelected(null);
+        return;
+      }
+      if (selected) return;
+      if (e.key === "ArrowRight") {
+        goTo(Math.min(PROJECTS.length - 1, currentRef.current + 1));
+      }
+      if (e.key === "ArrowLeft") {
+        goTo(Math.max(0, currentRef.current - 1));
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [selected]);
 
   useGSAP(() => {
     function calcTranslateX(): number {
@@ -191,31 +215,24 @@ const Work = () => {
     }
   }, []);
 
-  // Use smoother.scrollTo() — the site uses GSAP ScrollSmoother so native
-  // window.scrollTo fights with it and gets cut short
-  const goTo = (idx: number) => {
-    const st = ScrollTrigger.getById("work");
-    if (!st) return;
-    // scroll range = translateX / SMOOTHER_SPEED (wrapper scroll units)
-    const scrollRange = translateXRef.current / SMOOTHER_SPEED;
-    const target = st.start + (idx / (PROJECTS.length - 1)) * scrollRange;
-    if (smoother) {
-      smoother.scrollTo(target, true);
-    } else {
-      window.scrollTo({ top: target, behavior: "smooth" });
-    }
-  };
-
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
+        <div className="work-header">
+          <div>
+            <p className="section-label">Selected projects</p>
+            <h2>
+              My <span>Work</span>
+            </h2>
+          </div>
+          <p className="work-hint">
+            Click a project to explore · ← → to navigate
+          </p>
+        </div>
         <div className="work-flex">
           {PROJECTS.map((project, index) => (
             <div
-              className="work-box"
+              className={`work-box${current === index ? " is-active" : ""}`}
               key={index}
               onClick={() => setSelected(project)}
             >
@@ -231,6 +248,7 @@ const Work = () => {
                 <p>{project.description}</p>
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
+                <span className="work-explore">Explore project →</span>
               </div>
               <WorkImage
                 image={project.image}

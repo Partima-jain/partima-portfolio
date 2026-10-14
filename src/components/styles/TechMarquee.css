@@ -1,0 +1,31 @@
+.tech-marquee {
+  width: 100%;
+  border-block: 1px solid var(--line);
+  background: rgba(18, 21, 28, 0.55);
+  padding: 18px 0;
+  margin: 40px 0 0;
+  overflow: hidden;
+}
+.tech-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 28px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.25s ease;
+}
+.tech-marquee__item:hover {
+  color: var(--accentColor);
+}
+.tech-marquee__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accentColor);
+  opacity: 0.55;
+}

@@ -67,7 +67,7 @@ const SocialIcons = () => {
         </span>
       </div>
       <div className="resume-button-group">
-        {/* View — opens PDF in new tab */}
+        {/* View - opens PDF in new tab */}
         <a
           className="resume-button"
           href="/Partima_Jain_Resume.pdf"

@@ -1,14 +1,31 @@
 import "./styles/About.css";
 
+const HIGHLIGHTS = [
+  { label: "FastAPI", detail: "APIs" },
+  { label: "RAG", detail: "Search" },
+  { label: "LLMs", detail: "Agents" },
+  { label: "Voice AI", detail: "Realtime" },
+];
+
 const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
-        <h3 className="title">About Me</h3>
+        <p className="section-label">About</p>
+        <h3 className="title">I build AI that ships</h3>
         <p className="para">
-        Python AI Developer experienced in building production-ready AI applications, scalable backend systems, and LLM-powered workflows. Skilled in FastAPI, Python, Generative AI, Prompt Engineering, RAG pipelines, Vector Databases, AI Automation, NLP, and multimodal AI systems. Worked on integrating GPT-4 and Gemini into real-world products, optimizing AI response quality, building intelligent report generation systems, and developing scalable APIs for live production environments.
-
+          Python AI Developer focused on production systems - FastAPI backends,
+          LLM workflows, RAG pipelines, and multimodal AI. Clean architecture,
+          measurable impact, live products.
         </p>
+        <div className="about-highlights">
+          {HIGHLIGHTS.map((item) => (
+            <button key={item.label} className="about-chip" type="button">
+              <strong>{item.label}</strong>
+              <span>{item.detail}</span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,50 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const PANELS = [
+  {
+    title: "Develop",
+    subtitle: "Backend & Full-Stack",
+    body: "Scalable REST APIs, microservices, and full-stack apps - performance, security, and clean architecture from database to CI/CD.",
+    tags: [
+      "Python",
+      "FastAPI",
+      "Django",
+      "Flask",
+      "React.js",
+      "PostgreSQL",
+      "MongoDB",
+      "Docker",
+      "AWS",
+      "CI/CD",
+    ],
+  },
+  {
+    title: "AI & ML",
+    subtitle: "LLMs & Intelligent Systems",
+    body: "Production AI pipelines - NLP, semantic search, RAG, and generative systems with accuracy and reliability as the default.",
+    tags: [
+      "OpenAI / Gemini",
+      "LangChain",
+      "RAG",
+      "Pinecone",
+      "HuggingFace",
+      "NLP",
+      "spaCy",
+      "Transformers",
+      "Agents",
+    ],
+  },
+];
+
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [active, setActive] = useState(0);
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
   useEffect(() => {
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
@@ -24,15 +62,28 @@ const WhatIDo = () => {
       });
     };
   }, []);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    setActive(index);
+  };
+
   return (
     <div className="whatIDO">
       <div className="what-box">
+        <p className="section-label">Capabilities</p>
         <h2 className="title">
-          W<span className="hat-h2">HAT</span>
+          What
           <div>
-            I<span className="do-h2"> DO</span>
+            I <span className="do-h2">Do</span>
           </div>
         </h2>
+        <p className="what-lead">
+          Hover a panel to explore how I build and ship.
+        </p>
       </div>
       <div className="what-box">
         <div className="what-box-in">
@@ -43,118 +94,72 @@ const WhatIDo = () => {
                 y1="0"
                 x2="0"
                 y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="6,8"
               />
               <line
                 x1="100%"
                 y1="0"
                 x2="100%"
                 y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="6,8"
               />
             </svg>
           </div>
-          <div
-            className="what-content what-noTouch"
-            ref={(el) => setRef(el, 0)}
-          >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="0"
-                  x2="100%"
-                  y2="0"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-
-            <div className="what-content-in">
-              <h3>DEVELOP</h3>
-              <h4>Backend & Full-Stack Engineering</h4>
-              <p>
-                Building scalable REST APIs, microservices, and full-stack web
-                applications with a focus on performance, security, and clean
-                architecture — from database design to CI/CD deployment.
-              </p>
-              <h5>Skillset & tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tags">Python</div>
-                <div className="what-tags">FastAPI</div>
-                <div className="what-tags">Django</div>
-                <div className="what-tags">Flask</div>
-                <div className="what-tags">React.js</div>
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">Docker</div>
-                <div className="what-tags">AWS</div>
-                <div className="what-tags">CI/CD</div>
+          {PANELS.map((panel, index) => (
+            <div
+              className={`what-content what-noTouch${active === index ? " is-hot" : ""}`}
+              ref={(el) => setRef(el, index)}
+              key={panel.title}
+              onMouseMove={(e) => onMove(e, index)}
+              onMouseEnter={() => setActive(index)}
+            >
+              <div className="what-spotlight" />
+              <div className="what-border1">
+                <svg height="100%">
+                  <line
+                    x1="0"
+                    y1={index === 0 ? "0" : "100%"}
+                    x2="100%"
+                    y2={index === 0 ? "0" : "100%"}
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeDasharray="6,8"
+                  />
+                  {index === 0 && (
+                    <line
+                      x1="0"
+                      y1="100%"
+                      x2="100%"
+                      y2="100%"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeDasharray="6,8"
+                    />
+                  )}
+                </svg>
               </div>
-              <div className="what-arrow"></div>
-            </div>
-          </div>
-          <div
-            className="what-content what-noTouch"
-            ref={(el) => setRef(el, 1)}
-          >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h3>AI & ML</h3>
-              <h4>Intelligent Systems & LLM Integration</h4>
-              <p>
-                Designing and deploying AI-powered pipelines — from NLP and
-                semantic search to RAG systems and generative AI — with a focus
-                on accuracy, reliability, and production readiness.
-              </p>
-              <h5>Skillset & tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tags">OpenAI / Gemini</div>
-                <div className="what-tags">HuggingFace</div>
-                <div className="what-tags">LangChain</div>
-                <div className="what-tags">NLP</div>
-                <div className="what-tags">RAG Pipelines</div>
-                <div className="what-tags">Pinecone</div>
-                <div className="what-tags">spaCy</div>
-                <div className="what-tags">Transformers</div>
-                <div className="what-tags">Pandas</div>
-                <div className="what-tags">Semantic Search</div>
-                <div className="what-tags">Generative AI</div>
+              <div className="what-corner"></div>
+              <div className="what-content-in">
+                <div className="what-index">0{index + 1}</div>
+                <h3>{panel.title}</h3>
+                <h4>{panel.subtitle}</h4>
+                <p>{panel.body}</p>
+                <h5>Skillset & tools</h5>
+                <div className="what-content-flex">
+                  {panel.tags.map((tag) => (
+                    <div className="what-tags" key={tag}>
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+                <div className="what-arrow"></div>
               </div>
-              <div className="what-arrow"></div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

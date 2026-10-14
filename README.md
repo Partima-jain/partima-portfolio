@@ -17,9 +17,9 @@ Please do NOT:
 
 If you use parts of the code, you must provide proper credit linking back to the original repository.
 
-Build your own version — don’t just copy.
+Build your own version - don’t just copy.
 
-— Moncy Yohannan
+- Moncy Yohannan
 
 ---
 

@@ -144,11 +144,18 @@ const AboutSkills = () => {
     <section id="about" className="about-skills section-pad">
       <div className="container">
         <div className="about-skills__intro">
-          <h2>Skills & Expertise</h2>
-          <p>
-            Looking to join a <span>cross-functional team</span> that values
-            shipping reliable AI products people actually use.
-          </p>
+          <img
+            src="/images/partima-work.jpg"
+            alt="Partima Jain working"
+            className="about-skills__photo"
+          />
+          <div>
+            <h2>Skills & Expertise</h2>
+            <p>
+              Looking to join a <span>cross-functional team</span> that values
+              shipping reliable AI products people actually use.
+            </p>
+          </div>
         </div>
 
         <div className="about-skills__groups">

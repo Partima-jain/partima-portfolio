@@ -54,7 +54,7 @@ const PROJECTS = [
       "A comprehensive university discovery and application platform. Students get AI-powered shortlists ranked by personalised match scores, scholarship search with smart filters, counsellor booking, and OTP-secured auth - all backed by a production-grade FastAPI + PostgreSQL + MongoDB stack.",
     tools: "FastAPI, PostgreSQL, MongoDB, JWT, OTP Email, React, Python",
     image: "/images/proj-studconnect.png",
-    link: "https://github.com/Partima-jain/yournextuniversity-backend",
+    link: "https://yournextuniversity.com/",
   },
   {
     title: "AI Resume Screener",

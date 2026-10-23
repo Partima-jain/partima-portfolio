@@ -45,7 +45,7 @@ const PROJECTS = [
       "EdTech platform for university shortlisting and applications - AI match scores, scholarships, counsellor booking, and OTP auth on FastAPI + PostgreSQL + MongoDB.",
     tools: "FastAPI, PostgreSQL, MongoDB, JWT, OTP Email, React, Python",
     image: "/images/proj-studconnect.png",
-    link: "https://github.com/Partima-jain/yournextuniversity-backend",
+    link: "https://yournextuniversity.com/",
   },
   {
     title: "AI Phone Voice Assistant",
@@ -111,7 +111,17 @@ const Projects = () => {
               </div>
               <div className="projects__media">
                 <div className="projects__frame">
-                  <img src={project.image} alt={project.title} />
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="projects__frame-link"
+                  >
+                    <img
+                      src={project.image}
+                      alt={`View ${project.title} on GitHub`}
+                    />
+                  </a>
                 </div>
               </div>
             </article>

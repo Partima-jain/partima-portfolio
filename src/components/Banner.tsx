@@ -59,11 +59,13 @@ const Banner = () => {
             </div>
             <div className="banner__avatar">
               <div className="banner__avatar-glow" aria-hidden />
-              <img
-                src="/images/partima.jpg"
-                alt="Partima Jain"
-                className="banner__avatar-photo"
-              />
+              <div className="banner__avatar-clip">
+                <img
+                  src="/images/partima-formal.png"
+                  alt="Partima Jain"
+                  className="banner__avatar-photo"
+                />
+              </div>
             </div>
           </div>
 
